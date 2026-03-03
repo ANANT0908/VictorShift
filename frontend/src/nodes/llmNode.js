@@ -1,6 +1,7 @@
 // llmNode.js
 
 import { BaseNode } from './BaseNode';
+import { Bot } from 'lucide-react';
 
 export const LLMNode = ({ id, data }) => {
   return (
@@ -8,7 +9,7 @@ export const LLMNode = ({ id, data }) => {
       id={id}
       data={data}
       label="LLM"
-      icon="🤖"
+      icon={<Bot size={16} />}
       description="System prompt and LLM configuration model"
       accentColor="#8b5cf6"
       inputs={[

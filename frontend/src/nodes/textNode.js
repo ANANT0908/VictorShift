@@ -3,6 +3,10 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Handle, Position } from 'reactflow';
 import { useStore } from '../store';
+import { FileText } from 'lucide-react';
+
+// Helper for a lightweight SVG string for the inline tag chips
+const TagIconSVG = `<svg style="margin-right:4px; margin-bottom:-2px;" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 10 4 15 9 20"></polyline><path d="M20 4v7a4 4 0 0 1-4 4H4"></path></svg>`;
 
 // Convert raw text → HTML with inline tag chips
 const buildHtml = (text) => {
@@ -13,7 +17,7 @@ const buildHtml = (text) => {
     .replace(/>/g, '&gt;');
   html = html.replace(
     /\{\{\s*([a-zA-Z_$][a-zA-Z0-9_$]*(?:\.[a-zA-Z_$][a-zA-Z0-9_$]*)?)\s*\}\}/g,
-    '<span class="text-node-inline-tag" contenteditable="false" data-var="$1">📥 $1</span>'
+    `<span class="text-node-inline-tag" contenteditable="false" data-var="$1">${TagIconSVG}$1</span>`
   );
   html = html.replace(/\n/g, '<br>');
   return html;
@@ -186,7 +190,7 @@ export const TextNode = ({ id, data }) => {
     <div className="base-node text-node-resizable" style={{ width: dims.width }}>
       <div className="base-node-header">
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span className="base-node-icon" style={{ color: '#f59e0b' }}>📝</span>
+          <span className="base-node-icon" style={{ color: '#f59e0b' }}><FileText size={16} /></span>
           <span className="base-node-label">Text</span>
         </div>
         <button className="base-node-close">✕</button>

@@ -1,6 +1,7 @@
 // inputNode.js — Input node with visible Outputs section
 
 import { BaseNode } from './BaseNode';
+import { LogIn } from 'lucide-react';
 
 export const InputNode = ({ id, data }) => {
   const inputType = data?.inputType || 'Text';
@@ -10,7 +11,7 @@ export const InputNode = ({ id, data }) => {
       id={id}
       data={data}
       label="Input"
-      icon="📥"
+      icon={<LogIn size={16} />}
       description="Pass data of different types into your workflow"
       accentColor="#6366f1" // Changed to match the purple styling
       outputs={[{ id: 'value', label: 'text' }]}

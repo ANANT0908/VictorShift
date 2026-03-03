@@ -327,19 +327,80 @@ body {
   color: var(--text-muted);
 }
 
-/* Select */
-select.base-node-field-input {
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 8px center;
-  padding-right: 28px;
+/* Custom Select */
+.custom-select-container {
+  position: relative;
+  width: 100%;
 }
 
-select.base-node-field-input option {
-  background: var(--bg-card);
-  color: var(--text-primary);
+.custom-select-value {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 10px;
+  background: #f8fafc;
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  color: #0f172a;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.custom-select-value:hover,
+.custom-select-value.open {
+  border-color: var(--accent-indigo);
+  background: #ffffff;
+}
+
+.custom-select-arrow {
+  color: #94a3b8;
+  transition: transform 0.2s ease;
+}
+
+.custom-select-arrow.open {
+  transform: rotate(180deg);
+}
+
+.custom-select-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  box-shadow: var(--shadow-md);
+  z-index: 50;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-select-option {
+  padding: 8px 10px;
+  font-size: 13px;
+  color: #334155;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.custom-select-option:hover {
+  background: #f1f5f9;
+  /* Slate 100 */
+  color: #0f172a;
+  /* Slate 900 */
+}
+
+.custom-select-option.selected {
+  background: #e0e7ff;
+  /* Indigo 100 */
+  color: #4f46e5;
+  /* Indigo 600 */
+  font-weight: 500;
 }
 
 /* Textarea */

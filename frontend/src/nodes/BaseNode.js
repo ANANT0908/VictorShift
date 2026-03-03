@@ -2,6 +2,7 @@
 
 import { Handle, Position } from 'reactflow';
 import { useStore } from '../store';
+import { CustomSelect } from '../components/CustomSelect';
 
 export const BaseNode = ({ id, data, label, icon, description, inputs = [], outputs = [], fields = [], style = {}, children, accentColor = '#6366f1' }) => {
     const updateNodeField = useStore((state) => state.updateNodeField);
@@ -25,15 +26,11 @@ export const BaseNode = ({ id, data, label, icon, description, inputs = [], outp
                 return (
                     <div className="base-node-field" key={field.name}>
                         {renderLabelRow()}
-                        <select
-                            className="base-node-field-input"
+                        <CustomSelect
                             value={value}
                             onChange={handleChange}
-                        >
-                            {(field.options || []).map((opt) => (
-                                <option key={opt} value={opt}>{opt}</option>
-                            ))}
-                        </select>
+                            options={field.options || []}
+                        />
                     </div>
                 );
             case 'textarea':

@@ -1,6 +1,7 @@
 // outputNode.js
 
 import { BaseNode } from './BaseNode';
+import { LogOut } from 'lucide-react';
 
 export const OutputNode = ({ id, data }) => {
   return (
@@ -8,7 +9,7 @@ export const OutputNode = ({ id, data }) => {
       id={id}
       data={data}
       label="Output"
-      icon="📤"
+      icon={<LogOut size={16} />}
       description="Output data out of your workflow"
       accentColor="#8b5cf6"
       inputs={[{ id: 'value', label: 'value' }]}

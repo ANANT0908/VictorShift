@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { useStore } from '../store';
+import { StickyNote } from 'lucide-react';
 
 export const NoteNode = ({ id, data }) => {
     const updateNodeField = useStore((s) => s.updateNodeField);
@@ -48,7 +49,7 @@ export const NoteNode = ({ id, data }) => {
             {/* Header */}
             <div className="base-node-header">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span className="base-node-icon" style={{ color: '#eab308' }}>📌</span>
+                    <span className="base-node-icon" style={{ color: '#eab308' }}><StickyNote size={16} /></span>
                     <span className="base-node-label">Note</span>
                 </div>
                 <button className="base-node-close">✕</button>

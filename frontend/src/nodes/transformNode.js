@@ -1,6 +1,7 @@
 // transformNode.js — Data transformation node
 
 import { BaseNode } from './BaseNode';
+import { Workflow } from 'lucide-react';
 
 export const TransformNode = ({ id, data }) => {
     return (
@@ -8,7 +9,7 @@ export const TransformNode = ({ id, data }) => {
             id={id}
             data={data}
             label="Transform"
-            icon="🔄"
+            icon={<Workflow size={16} />}
             description="Apply data transformations to incoming variables"
             accentColor="#8b5cf6"
             inputs={[{ id: 'input' }]}
