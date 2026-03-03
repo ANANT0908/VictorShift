@@ -46,8 +46,12 @@ export const NoteNode = ({ id, data }) => {
             }}
         >
             {/* Header */}
-            <div className="base-node-header" style={{ borderTopColor: '#facc15' }}>
-                <span className="base-node-label">📌 Note</span>
+            <div className="base-node-header">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span className="base-node-icon" style={{ color: '#eab308' }}>📌</span>
+                    <span className="base-node-label">Note</span>
+                </div>
+                <button className="base-node-close">✕</button>
             </div>
 
             {/* Body */}

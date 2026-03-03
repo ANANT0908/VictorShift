@@ -8,7 +8,9 @@ export const TransformNode = ({ id, data }) => {
             id={id}
             data={data}
             label="Transform"
-            accentColor="#a78bfa"
+            icon="🔄"
+            description="Apply data transformations to incoming variables"
+            accentColor="#8b5cf6"
             inputs={[{ id: 'input' }]}
             outputs={[{ id: 'output' }]}
             fields={[

@@ -8,6 +8,8 @@ export const LLMNode = ({ id, data }) => {
       id={id}
       data={data}
       label="LLM"
+      icon="🤖"
+      description="System prompt and LLM configuration model"
       accentColor="#8b5cf6"
       inputs={[
         { id: 'system', label: 'System' },

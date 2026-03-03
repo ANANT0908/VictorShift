@@ -3,7 +3,7 @@
 import { Handle, Position } from 'reactflow';
 import { useStore } from '../store';
 
-export const BaseNode = ({ id, data, label, inputs = [], outputs = [], fields = [], style = {}, children, accentColor = '#6366f1' }) => {
+export const BaseNode = ({ id, data, label, icon, description, inputs = [], outputs = [], fields = [], style = {}, children, accentColor = '#6366f1' }) => {
     const updateNodeField = useStore((state) => state.updateNodeField);
 
     const renderField = (field) => {
@@ -13,11 +13,18 @@ export const BaseNode = ({ id, data, label, inputs = [], outputs = [], fields = 
             updateNodeField(id, field.name, e.target.value);
         };
 
+        const renderLabelRow = () => (
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <label className="base-node-field-label">{field.label}</label>
+                {field.badge && <span className="base-node-field-badge">{field.badge}</span>}
+            </div>
+        );
+
         switch (field.type) {
             case 'select':
                 return (
                     <div className="base-node-field" key={field.name}>
-                        <label className="base-node-field-label">{field.label}</label>
+                        {renderLabelRow()}
                         <select
                             className="base-node-field-input"
                             value={value}
@@ -32,7 +39,7 @@ export const BaseNode = ({ id, data, label, inputs = [], outputs = [], fields = 
             case 'textarea':
                 return (
                     <div className="base-node-field" key={field.name}>
-                        <label className="base-node-field-label">{field.label}</label>
+                        {renderLabelRow()}
                         <textarea
                             className="base-node-field-input base-node-textarea"
                             value={value}
@@ -45,7 +52,7 @@ export const BaseNode = ({ id, data, label, inputs = [], outputs = [], fields = 
             default:
                 return (
                     <div className="base-node-field" key={field.name}>
-                        <label className="base-node-field-label">{field.label}</label>
+                        {renderLabelRow()}
                         <input
                             type="text"
                             className="base-node-field-input"
@@ -60,12 +67,21 @@ export const BaseNode = ({ id, data, label, inputs = [], outputs = [], fields = 
     return (
         <div className="base-node" style={style}>
             {/* Header */}
-            <div className="base-node-header" style={{ borderTopColor: accentColor }}>
-                <span className="base-node-label">{label}</span>
+            <div className="base-node-header">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    {icon && <span className="base-node-icon" style={{ color: accentColor }}>{icon}</span>}
+                    <span className="base-node-label">{label}</span>
+                </div>
+                <button className="base-node-close" onClick={() => {/* TODO: implement delete */ }}>
+                    ✕
+                </button>
             </div>
 
             {/* Body */}
             <div className="base-node-body">
+                {description && (
+                    <div className="base-node-description">{description}</div>
+                )}
                 {fields.map(renderField)}
                 {children}
             </div>

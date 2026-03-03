@@ -8,7 +8,9 @@ export const APINode = ({ id, data }) => {
             id={id}
             data={data}
             label="API Call"
-            accentColor="#f97316"
+            icon="🌐"
+            description="Send an HTTP request to an external service"
+            accentColor="#3b82f6"
             inputs={[{ id: 'body', label: 'Body' }]}
             outputs={[
                 { id: 'response', label: 'Response' },

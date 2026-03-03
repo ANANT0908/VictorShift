@@ -184,11 +184,16 @@ export const TextNode = ({ id, data }) => {
 
   return (
     <div className="base-node text-node-resizable" style={{ width: dims.width }}>
-      <div className="base-node-header" style={{ borderTopColor: '#f59e0b' }}>
-        <span className="base-node-label">📝 Text</span>
+      <div className="base-node-header">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span className="base-node-icon" style={{ color: '#f59e0b' }}>📝</span>
+          <span className="base-node-label">Text</span>
+        </div>
+        <button className="base-node-close">✕</button>
       </div>
 
       <div className="base-node-body" style={{ position: 'relative' }}>
+        <div className="base-node-description">Write static text or use {'{{'} to insert variables</div>
         <div className="base-node-field">
           <label className="base-node-field-label">Text</label>
 

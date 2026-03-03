@@ -10,11 +10,13 @@ export const InputNode = ({ id, data }) => {
       id={id}
       data={data}
       label="Input"
-      accentColor="#2dd4bf"
+      icon="📥"
+      description="Pass data of different types into your workflow"
+      accentColor="#6366f1" // Changed to match the purple styling
       outputs={[{ id: 'value', label: 'text' }]}
       fields={[
         { name: 'inputName', type: 'text', label: 'Name', defaultValue: id.replace('customInput-', 'input_') },
-        { name: 'inputType', type: 'select', label: 'Type', options: ['Text', 'File'], defaultValue: 'Text' },
+        { name: 'inputType', type: 'select', label: 'Type', badge: 'Dropdown', options: ['Text', 'File'], defaultValue: 'Text' },
       ]}
     >
       {/* Visible Outputs section */}

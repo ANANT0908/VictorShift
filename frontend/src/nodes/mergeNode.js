@@ -8,7 +8,9 @@ export const MergeNode = ({ id, data }) => {
             id={id}
             data={data}
             label="Merge"
-            accentColor="#34d399"
+            icon="🔗"
+            description="Combine multiple inputs into a single output stream"
+            accentColor="#10b981"
             inputs={[
                 { id: 'a', label: 'A' },
                 { id: 'b', label: 'B' },

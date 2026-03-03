@@ -6,30 +6,31 @@
 
 /* ── CSS Variables ──────────────────────────────────────────────────────── */
 :root {
-  --bg-primary: #0f1117;
-  --bg-secondary: #161b26;
-  --bg-card: #1e2433;
-  --bg-input: #151a27;
-  --border-subtle: rgba(255, 255, 255, 0.08);
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --border-subtle: #e2e8f0;
   --border-active: #6366f1;
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
   --text-muted: #64748b;
   --accent-indigo: #6366f1;
   --accent-violet: #8b5cf6;
-  --accent-teal: #2dd4bf;
-  --accent-rose: #f43f5e;
-  --accent-amber: #f59e0b;
-  --accent-cyan: #22d3ee;
-  --accent-orange: #f97316;
-  --accent-emerald: #34d399;
-  --accent-purple: #a78bfa;
-  --accent-yellow: #facc15;
+  --accent-teal: #0d9488;
+  --accent-rose: #e11d48;
+  --accent-amber: #d97706;
+  --accent-cyan: #0891b2;
+  --accent-orange: #ea580c;
+  --accent-emerald: #059669;
+  --accent-purple: #7c3aed;
+  --accent-yellow: #ca8a04;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --font-mono: 'Inter', 'SF Mono', 'Fira Code', monospace;
+  /* Use Inter for cleaner look */
+  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.025);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.03);
   --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -191,10 +192,10 @@ body {
 
 /* ── Base Node (Card Style) ─────────────────────────────────────────────── */
 .base-node {
-  min-width: 220px;
+  min-width: 260px;
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: var(--shadow-md);
   overflow: visible;
   position: relative;
@@ -202,29 +203,52 @@ body {
 }
 
 .base-node:hover {
-  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: var(--shadow-lg);
 }
 
 .react-flow__node.selected .base-node {
   border-color: var(--accent-indigo);
-  box-shadow: 0 0 0 1px var(--accent-indigo), var(--shadow-lg);
+  box-shadow: 0 0 0 1px var(--accent-indigo), var(--shadow-sm);
 }
 
 /* Node Header */
 .base-node-header {
-  padding: 10px 14px;
-  border-top: 3px solid var(--accent-indigo);
-  border-radius: 10px 10px 0 0;
-  background: rgba(255, 255, 255, 0.03);
+  padding: 12px 14px;
   border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .base-node-label {
-  font-family: var(--font-mono);
-  font-size: 13px;
+  font-family: var(--font-sans);
+  font-size: 14px;
   font-weight: 600;
-  color: var(--text-primary);
+  color: #0f172a;
+  /* Slate 900 for high contrast */
   letter-spacing: -0.01em;
+}
+
+.base-node-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.base-node-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.base-node-close:hover {
+  background: #f1f5f9;
+  color: #0f172a;
 }
 
 /* Node Body */
@@ -233,6 +257,14 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.base-node-description {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: 4px;
+  font-family: var(--font-sans);
 }
 
 .base-node-static-text {
@@ -249,23 +281,38 @@ body {
 }
 
 .base-node-field-label {
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  color: #334155;
+  /* Slate 700 */
+  font-family: var(--font-sans);
+}
+
+.base-node-field-badge {
+  background: #ede9fe;
+  /* Slate 100/Purple 100 mix */
+  color: #5b21b6;
+  /* Purple 800 */
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: var(--font-sans);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-family: var(--font-sans);
 }
 
 .base-node-field-input {
   width: 100%;
-  padding: 7px 10px;
-  background: var(--bg-input);
+  padding: 8px 10px;
+  background: #f8fafc;
+  /* Slate 50 */
   border: 1px solid var(--border-subtle);
   border-radius: 6px;
-  color: var(--text-primary);
+  color: #0f172a;
+  /* Slate 900 */
   font-size: 13px;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   outline: none;
   transition: var(--transition);
 }
@@ -273,6 +320,7 @@ body {
 .base-node-field-input:focus {
   border-color: var(--accent-indigo);
   box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15);
+  background: #ffffff;
 }
 
 .base-node-field-input::placeholder {

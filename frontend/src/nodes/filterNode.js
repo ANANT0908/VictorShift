@@ -8,7 +8,9 @@ export const FilterNode = ({ id, data }) => {
             id={id}
             data={data}
             label="Filter"
-            accentColor="#22d3ee"
+            icon="🔍"
+            description="Conditionally filter incoming data streams"
+            accentColor="#0ea5e9"
             inputs={[{ id: 'data', label: 'Data' }]}
             outputs={[
                 { id: 'passed', label: 'Passed' },
